@@ -3,7 +3,7 @@
     <include>ardupilotmega.xml</include>
     <enums>
       <enum name="ONBOARD_COMPUTE_TYPE">
-        <entry value="0" name="NONE">
+        <entry value="0" name="NO_ONBOARD_COMPUTE">
           <description>No onboard companion-computer</description>
         </entry>
         <entry value="1" name="RPI5"> 
@@ -51,7 +51,7 @@
       <!-- <enum name="MAV_BATTERY_FAULT">
       </enum> -->
       <enum name="LR_C2_RADIO_TYPE">
-        <entry value="0" name="NONE">
+        <entry value="0" name="NO_LR">
         <description>No LR radio module present</description>
         </entry>      
         <entry value="1" name="CORETRONIC_R405LQ">
