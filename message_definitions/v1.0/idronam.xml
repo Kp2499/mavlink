@@ -12,7 +12,7 @@
         <entry value="2" name="JETSONORIN"> 
           <description>Jetson orin Nano/NX companion-computer</description>
         </entry>
-        <entry value="255" name="FAULT"> 
+        <entry value="255" name="ONBOARD_COMPUTE_ERROR"> 
           <description>Faulty companion-computer</description>
         </entry>
       </enum>  
@@ -60,7 +60,7 @@
         <entry value="2" name="PINEAPPLE">
         <description>LR is 8devices pineapple</description>
         </entry>
-        <entry value="255" name="FAULT">
+        <entry value="255" name="LR_ERROR">
         <description>Faulty radio</description>
         </entry>
       </enum>
