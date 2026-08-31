@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<mavlink>
+    <include>ardupilotmega.xml</include>
+    <enums>
+      <enum name="ONBOARD_COMPUTE_TYPE">
+        <entry value="0" name="NONE">
+          <description>No onboard companion-computer</description>
+        </entry>
+        <entry value="1" name="RPI5"> 
+          <description>Raspberry Pi 5 companion-computer</description>
+        </entry>
+        <entry value="2" name="JETSONORIN"> 
+          <description>Jetson orin Nano/NX companion-computer</description>
+        </entry>
+        <entry value="255" name="FAULT"> 
+          <description>Faulty companion-computer</description>
+        </entry>
+      </enum>  
+      <enum name="SYSTEM_IFACE_TYPE">
+        <entry value="1" name="SYSTEM_IFACE_ETH">
+          <description>Ethernet port IP</description>
+        </entry>
+        <entry value="2" name="SYSTEM_IFACE_WIFI">
+          <description>Wifi Interface IP</description>
+        </entry>
+        <entry value="3" name="SYSTEM_IFACE_LR_WIFI">
+          <description>LR Wifi Interface IP</description>
+        </entry>
+        <entry value="4" name="SYSTEM_IFACE_5GMODULE">
+          <description>5G module Interface IP</description>
+        </entry>
+      </enum>
+       <enum name="CHARGING_STATION_STAT">
+        <entry value="0" name="NOT_CHARGING">
+        </entry>
+        <entry value="1" name="TRICKLE_CHARGE">
+        </entry>
+        <entry value="2" name="PRE_CHARGE">
+        </entry>
+        <entry value="3" name="FAST_CHARGE">
+        </entry>
+        <entry value="4" name="TAPER_CHARGE">
+        </entry>
+        <entry value="5" name="RESERVED">
+        </entry>
+        <entry value="6" name="TOP_OFF_CHARGE">
+        </entry>
+        <entry value="7" name="CHARGE_TERMINATION_DONE">
+        </entry>
+      </enum>
+      <!-- <enum name="MAV_BATTERY_FAULT">
+      </enum> -->
+      <enum name="LR_C2_RADIO_TYPE">
+        <entry value="0" name="NONE">
+        <description>No LR radio module present</description>
+        </entry>      
+        <entry value="1" name="CORETRONIC_R405LQ">
+        <description>LR is coretronic reality R405LQ</description>
+        </entry>
+        <entry value="2" name="8DEVICES_PINEAPPLE">
+        <description>LR is 8devices pineapple</description>
+        </entry>
+        <entry value="255" name="FAULT">
+        <description>Faulty radio</description>
+        </entry>
+      </enum>
+    </enums>    
+    <!-- idronam custom messages — use IDs 55000+ for private dialects -->
+    <messages>
+        <message id="55000" name="ONBOARD_COMPUTE_SYS_STATUS">
+            <description>Onboard companion-computer system status including computer type, serial no., cpu utilization, ram utilization, storage utilization and cpu temp</description>
+            <field type="uint8_t" name="onboard_compute" enum="ONBOARD_COMPUTE_TYPE">Onboard companion-computer Type</field>
+            <field type="char[40]" name="serial_no">Serial Number of onboard companion-computer</field>
+            <field type="uint8_t" name="cpu_usage">CPU utilization in percentage</field>
+            <field type="uint8_t" name="ram_usage">RAM utilization in percentage</field>
+            <field type="uint8_t" name="storage_usage">Storage utilization in percentage</field>
+            <field type="int8_t" name="cpu_temp">CPU Temperature in degC</field>
+        </message>
+        <message id="55001" name="SYSTEM_IFACE_IP">
+            <description>Onboard companion-computer IPs on various interfaces</description>
+            <field type="uint8_t" name="system_inf_type" enum="SYSTEM_IFACE_TYPE">Type of Interface</field>
+            <field type="char[25]" name="iface_ip">System Interface IP</field>
+        </message> 
+        <message id="55002" name="LR_C2_LINK_STAT">
+            <description>Long range C2 radio telemetry including signal strength, connection state, and thermal status</description>
+            <field type="uint8_t" name="LR_C2_type" enum="LR_C2_RADIO_TYPE">LR C2 Radio Type</field>
+            <field type="uint8_t"  name="rssi"> Remote (message receiver) signal strength indication in device-dependent units/scale.</field>
+            <field type="uint8_t" name="connection_stat">WiFi connection status</field>
+            <field type="int8_t"  name="wifi_temp">WiFi module temperature degC. INT8_MAX if unknown</field>
+            <field type="int8_t"  name="cpu_temp">CPU temperature degC. INT8_MAX if unknown</field>
+        </message>
+        <message id="55003" name="CHARGING_STATION_INFO">
+            <description>Info of charging station</description>
+            <field type="char[16]" name="serial_no"> Serial Number of charging station.</field>
+            <field type="uint16_t"  name="input_volt"> Input voltage to charging station in milli-Volts.</field>
+            <field type="int16_t" name="input_curr">Input current to charging station in centi-Amps.</field>
+            <field type="uint16_t"  name="charging_volt"> Charging voltage from charging station in milli-Volts.</field>
+            <field type="int16_t" name="charging_curr">Charging current from charging station in centi-Amps.</field>
+            <field type="int16_t"  name="temperature">Temperature of charging station in cdegC. </field>
+            <field type="uint8_t"  name="charger_stat" enum="CHARGING_STATION_STAT"> Mode of charging station.</field>
+            <field type="uint32_t" name="fault_bitmask" enum="MAV_BATTERY_FAULT"> Fault in charging station. </field>
+        </message>
+    </messages>
+</mavlink>
