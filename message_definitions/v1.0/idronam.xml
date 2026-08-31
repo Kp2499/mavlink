@@ -57,7 +57,7 @@
         <entry value="1" name="CORETRONIC_R405LQ">
         <description>LR is coretronic reality R405LQ</description>
         </entry>
-        <entry value="2" name="8DEVICES_PINEAPPLE">
+        <entry value="2" name="PINEAPPLE">
         <description>LR is 8devices pineapple</description>
         </entry>
         <entry value="255" name="FAULT">
