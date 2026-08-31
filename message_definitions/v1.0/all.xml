@@ -48,5 +48,10 @@
     messages: 52100 - ? < 60000
     commands: 52100 - ? < 60000
   -->
+  <!-- idronam.xml range of IDs:
+  messages: 55000 - 55099
+  commands: 55000 - 55099
+  -->
+  <include>idronam.xml</include>
   <messages/>
 </mavlink>
