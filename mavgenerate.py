@@ -161,7 +161,7 @@ class Application(Frame):
                 return
 
         # Generate headers
-        opts = mavgen.Opts(self.out_value.get(), wire_protocol=self.protocol_value.get(), language=self.language_value.get(), validate=self.validate_value.get(), error_limit=error_limit, strict_units=self.strict_units_value.get());
+        opts = mavgen.Opts(self.out_value.get(), wire_protocol=self.protocol_value.get(), language=self.language_value.get(), validate=self.validate_value.get(),  strict_units=self.strict_units_value.get()); #error_limit=error_limit,
         args = [self.xml_value.get()]
         try:
             mavgen.mavgen(opts,args)
